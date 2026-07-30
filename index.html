@@ -6,7 +6,7 @@
   <meta property="creator.productor"
         content="http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/10">
   <title>SOS Chuva — Monitoramento de Tempestades em Tempo Real</title>
-  <link rel="icon" type="image/png" href="../img/logo.png">
+  <link rel="icon" type="image/png" href="/img/logo.png">
   <meta name="description" content="Aplicativo do INPE/CPTEC para monitoramento meteorológico em tempo real no Brasil: radar, satélite GOES-19, raios, previsão imediata de tempestades e eventos reportados pela população.">
 
   <!-- Bootstrap 5 -->
@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Slab:wght@500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Estilos do SOS Chuva -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
@@ -90,7 +90,38 @@
           <div class="radar-ring rr1"></div><div class="radar-ring rr2"></div>
           <div class="radar-ring rr3"></div><div class="radar-ring rr4"></div>
           <div class="radar-cross h"></div><div class="radar-cross v"></div>
-          <div class="echo e1"></div><div class="echo e2"></div><div class="echo e3"></div>
+          <!-- Ecos de radar: polígonos de refletividade (frio nas bordas → quente no núcleo) -->
+          <svg class="radar-echoes" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <filter id="echoBlur" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.4"/>
+              </filter>
+            </defs>
+            <g filter="url(#echoBlur)">
+              <path d="M 212.7,156.2 L 189.2,176.4 L 161.7,184.7 L 135.8,191.6 L 118.5,174.3 L 106.7,155.9 L 84.7,127.2 L 106.0,99.3 L 128.1,87.7 L 164.0,79.7 L 192.5,89.3 L 188.0,115.7 Z" fill="#00c8ff"/>
+              <path d="M 204.1,153.8 L 183.8,171.5 L 159.9,178.4 L 137.8,184.4 L 122.8,169.2 L 112.6,153.5 L 93.3,128.4 L 111.9,104.7 L 130.8,94.5 L 161.9,87.4 L 186.9,95.9 L 182.8,118.6 Z" fill="#00cc00"/>
+              <path d="M 196.6,151.6 L 178.7,166.0 L 158.5,172.8 L 139.0,177.7 L 127.5,164.7 L 118.8,150.6 L 101.8,130.7 L 117.9,109.7 L 133.4,100.7 L 160.2,94.7 L 181.3,102.7 L 177.8,121.1 Z" fill="#ffff00"/>
+              <path d="M 187.1,149.1 L 172.7,160.8 L 157.2,165.3 L 141.6,170.8 L 130.5,159.6 L 124.3,148.4 L 110.4,131.7 L 124.0,114.2 L 137.1,107.9 L 158.7,102.8 L 175.5,108.0 L 172.0,123.9 Z" fill="#ffd000"/>
+              <path d="M 179.3,145.9 L 168.9,155.7 L 155.3,160.7 L 143.3,163.1 L 136.3,156.0 L 128.9,146.3 L 119.9,133.2 L 128.5,119.3 L 140.7,115.1 L 155.5,110.6 L 169.3,114.2 L 167.2,127.6 Z" fill="#ff8c00"/>
+              <path d="M 172.3,142.9 L 162.0,150.6 L 153.4,154.2 L 145.3,157.2 L 139.8,151.3 L 135.5,143.6 L 127.7,133.0 L 135.6,123.9 L 141.4,120.7 L 153.6,117.3 L 164.0,121.4 L 161.3,131.8 Z" fill="#ff4500"/>
+              <path d="M 163.4,140.3 L 159.5,145.1 L 150.9,147.2 L 145.7,150.0 L 145.3,143.6 L 141.3,139.9 L 137.5,135.4 L 139.5,128.8 L 144.2,126.6 L 151.9,126.0 L 157.9,129.8 L 158.3,133.4 Z" fill="#e53935"/>
+              <path d="M 257.4,146.9 L 260.4,157.0 L 251.3,165.2 L 244.3,172.8 L 230.7,172.6 L 223.7,163.5 L 214.6,148.6 L 215.2,135.7 L 228.8,132.9 L 243.8,125.4 L 255.6,131.3 Z" fill="#00c8ff"/>
+              <path d="M 249.8,148.7 L 251.1,154.0 L 245.6,158.8 L 242.3,163.8 L 233.2,162.9 L 229.9,158.5 L 224.5,148.7 L 224.4,142.1 L 232.7,140.6 L 240.9,136.1 L 247.8,138.7 Z" fill="#00cc00"/>
+              <path d="M 240.2,150.5 L 243.1,153.1 L 241.7,154.6 L 239.4,156.3 L 237.4,154.0 L 236.8,152.3 L 232.2,148.2 L 233.3,146.1 L 237.7,148.2 L 238.2,143.7 L 241.6,145.1 Z" fill="#ffff00"/>
+              <path d="M 320.4,128.8 L 307.8,132.2 L 290.2,136.5 L 284.7,125.8 L 284.7,112.9 L 286.1,106.5 L 301.2,97.2 L 311.5,99.9 L 321.8,110.4 Z" fill="#00c8ff"/>
+              <path d="M 303.9,121.3 L 300.5,120.6 L 297.6,121.1 L 298.1,119.5 L 296.1,116.2 L 297.5,115.6 L 300.8,113.2 L 301.3,115.3 L 302.9,117.4 Z" fill="#00cc00"/>
+              <path d="M 266.8,210.5 L 264.5,224.9 L 248.0,232.0 L 240.2,225.1 L 234.5,215.1 L 237.5,202.3 L 241.6,191.8 L 256.2,194.9 L 269.1,200.4 Z" fill="#00c8ff"/>
+              <path d="M 262.4,210.8 L 260.7,221.1 L 248.0,225.8 L 242.6,220.6 L 238.3,213.3 L 240.6,204.5 L 243.7,196.5 L 254.2,198.7 L 264.5,203.1 Z" fill="#00cc00"/>
+              <path d="M 258.1,209.5 L 257.3,216.1 L 248.8,221.4 L 245.8,217.2 L 243.2,213.2 L 244.8,205.8 L 245.0,201.1 L 252.4,202.3 L 259.9,206.4 Z" fill="#ffff00"/>
+              <path d="M 252.7,210.6 L 252.5,214.4 L 249.5,213.6 L 247.1,213.2 L 246.1,211.3 L 248.9,208.1 L 247.3,208.1 L 251.3,205.5 L 252.2,206.7 Z" fill="#ffd000"/>
+              <path d="M 344.7,201.4 L 348.2,205.2 L 343.7,214.3 L 331.5,218.7 L 327.5,220.1 L 318.4,216.4 L 314.2,209.4 L 316.3,195.2 L 323.8,193.9 L 330.7,192.4 L 337.8,190.7 Z" fill="#00c8ff"/>
+              <path d="M 331.5,203.6 L 333.6,204.5 L 332.6,207.2 L 328.8,207.8 L 328.3,207.5 L 329.2,207.0 L 328.5,204.4 L 327.5,204.1 L 329.9,202.2 L 329.6,202.5 L 332.6,200.6 Z" fill="#00cc00"/>
+              <path d="M 122.5,232.3 L 115.1,239.4 L 109.7,239.4 L 96.7,240.0 L 90.6,222.0 L 97.7,214.9 L 107.4,209.8 L 123.1,209.1 L 122.9,221.7 Z" fill="#00c8ff"/>
+              <path d="M 117.7,228.9 L 112.5,233.1 L 109.5,233.0 L 101.5,234.2 L 98.9,223.6 L 103.2,219.1 L 108.8,215.7 L 118.1,214.7 L 116.9,223.4 Z" fill="#00cc00"/>
+              <path d="M 111.7,225.8 L 109.7,228.2 L 111.0,227.9 L 105.8,227.2 L 105.6,223.6 L 107.2,222.7 L 109.8,222.4 L 111.1,220.9 L 113.1,226.1 Z" fill="#ffff00"/>
+              <path d="M 215.6,93.9 L 208.2,103.5 L 200.0,109.8 L 194.4,109.2 L 189.1,97.5 L 185.4,89.5 L 193.8,82.0 L 203.2,82.9 L 211.3,86.9 Z" fill="#00c8ff"/>
+            </g>
+          </svg>
           <div class="radar-sweep"></div>
         </div>
       </div>
