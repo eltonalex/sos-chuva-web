@@ -22,11 +22,11 @@
 
   /* Escala oficial de refletividade dBZ do app (5 → 70 dBZ) */
   --dbz-scale:linear-gradient(90deg,
-    #a9a9a9 0%, #a9a9a9 7%,
-    #00c8ff 14%, #0064ff 21%, #0000cc 28%,
-    #008800 36%, #00cc00 43%, #ffff00 50%,
-    #ffd000 57%, #ff8c00 64%, #ff4500 71%,
-    #ff0000 79%, #cc0000 86%, #660000 93%, #9900cc 100%);
+  #a9a9a9 0%, #a9a9a9 7%,
+  #00c8ff 14%, #0064ff 21%, #0000cc 28%,
+  #008800 36%, #00cc00 43%, #ffff00 50%,
+  #ffd000 57%, #ff8c00 64%, #ff4500 71%,
+  #ff0000 79%, #cc0000 86%, #660000 93%, #9900cc 100%);
 
   --font:'Roboto',sans-serif;
   --font-head:'Roboto Slab',serif;
@@ -109,10 +109,10 @@ a{text-decoration:none}
 .radar-sweep{position:absolute;width:min(430px,86vw);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,rgba(255,255,255,.5),rgba(255,255,255,0) 55deg,transparent);animation:sweep 4s linear infinite}
 @keyframes sweep{to{transform:rotate(360deg)}}
 /* Ecos com a escala dBZ real */
-.echo{position:absolute;border-radius:50%;filter:blur(2px);opacity:.92}
-.echo.e1{width:72px;height:54px;background:radial-gradient(circle,#ff0000,#ffd000 60%,transparent);top:32%;left:56%}
-.echo.e2{width:46px;height:40px;background:radial-gradient(circle,#9900cc,#ff4500 55%,transparent);top:44%;left:61%}
-.echo.e3{width:56px;height:46px;background:radial-gradient(circle,#00cc00,#00c8ff 65%,transparent);top:56%;left:39%}
+/* Ecos de radar em polígonos de refletividade (contornos frio→quente) */
+.radar-echoes{position:absolute;width:min(430px,86vw);aspect-ratio:1;overflow:visible;opacity:.95;pointer-events:none;transform-origin:center;animation:echoDrift 7s ease-in-out infinite}
+.radar-echoes path{stroke:none}
+@keyframes echoDrift{0%,100%{opacity:.86;transform:scale(1)}50%{opacity:1;transform:scale(1.025)}}
 
 .status-chip{position:absolute;z-index:3;background:rgba(13,27,46,.72);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:.55rem .8rem;backdrop-filter:blur(6px);font-family:var(--font-mono);font-size:.72rem;color:#eaf3ff;display:flex;align-items:center;gap:.5rem;box-shadow:var(--elev-2)}
 .status-chip .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(67,160,71,.6);animation:pulse 2s infinite}
@@ -193,4 +193,4 @@ a{text-decoration:none}
   .hero-stats{justify-content:center}
   .radar-wrap{min-height:350px;margin-top:2.5rem}
 }
-@media (prefers-reduced-motion:reduce){.radar-sweep,.status-chip .pulse{animation:none}}
+@media (prefers-reduced-motion:reduce){.radar-sweep,.status-chip .pulse,.radar-echoes{animation:none}}
