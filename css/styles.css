@@ -1,0 +1,196 @@
+:root{
+  /* Azul Material — cor de marca real do app (DrawerHeader / switches activeColor) */
+  --blue-900:#0d47a1;
+  --blue-800:#1565c0;
+  --blue-700:#1976d2;
+  --blue-600:#1e88e5;
+  --blue-500:#2196f3;   /* Colors.blue */
+  --blue-100:#bbdefb;
+  --blue-050:#e3f2fd;
+
+  /* Superfícies (tema claro do Material) */
+  --bg:#f4f6f9;
+  --surface:#ffffff;
+  --ink:#212121;        /* black87 */
+  --ink-2:#5f6b7a;      /* grey600 */
+  --line:#e2e8f1;
+
+  /* Cores funcionais Material usadas no app */
+  --green:#43a047;      /* estado ativo / dados ok */
+  --amber:#ffc107;      /* raios */
+  --red:#e53935;
+
+  /* Escala oficial de refletividade dBZ do app (5 → 70 dBZ) */
+  --dbz-scale:linear-gradient(90deg,
+    #a9a9a9 0%, #a9a9a9 7%,
+    #00c8ff 14%, #0064ff 21%, #0000cc 28%,
+    #008800 36%, #00cc00 43%, #ffff00 50%,
+    #ffd000 57%, #ff8c00 64%, #ff4500 71%,
+    #ff0000 79%, #cc0000 86%, #660000 93%, #9900cc 100%);
+
+  --font:'Roboto',sans-serif;
+  --font-head:'Roboto Slab',serif;
+  --font-mono:'Roboto Mono',monospace;
+
+  --elev-1:0 1px 3px rgba(15,41,82,.12),0 1px 2px rgba(15,41,82,.08);
+  --elev-2:0 6px 20px rgba(15,41,82,.10);
+  --elev-3:0 18px 42px rgba(13,71,161,.16);
+}
+
+*{box-sizing:border-box}
+body{font-family:var(--font);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--font-head);letter-spacing:-.01em}
+a{text-decoration:none}
+
+.eyebrow{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue-700);display:inline-flex;align-items:center;gap:.55rem;font-weight:500;
+}
+.eyebrow::before{content:"";width:26px;height:3px;background:var(--dbz-scale);display:inline-block;border-radius:2px}
+.eyebrow.on-blue{color:#cfe6ff}
+
+.dbz-bar{height:6px;width:100%;background:var(--dbz-scale)}
+
+/* ===== NAVBAR ===== */
+.navbar-sos{background:var(--blue-800);padding:.85rem 0}
+.brand{display:flex;align-items:center;gap:.6rem}
+.brand-logo{width:46px;height:46px;object-fit:contain;flex:0 0 auto;display:block}
+.drawer-logo{width:66px;height:66px;object-fit:contain;flex:0 0 auto;display:block}
+.brand-mark{
+  width:40px;height:40px;border-radius:10px;background:#fff;display:grid;place-items:center;
+  position:relative;overflow:hidden;box-shadow:var(--elev-1);flex:0 0 auto;
+}
+.brand-mark .ring{position:absolute;border:1.6px solid var(--blue-500);border-radius:50%;opacity:.55}
+.brand-mark .r1{width:28px;height:28px}
+.brand-mark .r2{width:16px;height:16px}
+.brand-mark .dot{width:7px;height:7px;border-radius:50%;background:var(--blue-600)}
+.brand-name{font-family:var(--font-head);font-weight:700;color:#fff;line-height:1;font-size:1.18rem}
+.brand-name small{display:block;font-family:var(--font-mono);font-weight:400;font-size:.58rem;letter-spacing:.2em;color:#cfe6ff;margin-top:3px}
+.navbar-sos .nav-link{color:#eaf3ff !important;font-weight:500;font-size:.94rem;padding:.4rem .9rem !important}
+.navbar-sos .nav-link:hover{color:#fff !important;opacity:.85}
+.navbar-toggler{border-color:rgba(255,255,255,.3)}
+.navbar-toggler-icon{filter:invert(1) grayscale(1) brightness(2)}
+.btn-nav{background:#fff;color:var(--blue-700);font-weight:700;font-size:.88rem;border-radius:8px;padding:.5rem 1.15rem;border:none}
+.btn-nav:hover{background:var(--blue-050);color:var(--blue-800)}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;color:#fff;padding:4.5rem 0 5rem;overflow:hidden;
+  background:linear-gradient(160deg,var(--blue-900),var(--blue-700) 55%,var(--blue-600));
+}
+.hero-grid{
+  position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:46px 46px;mask-image:radial-gradient(circle at 62% 34%,#000,transparent 74%);
+}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;line-height:1.05;color:#fff}
+.hero h1 .accent{color:#ffe08a}
+.hero-lead{color:#dcecff;font-size:1.06rem;max-width:33rem;margin-top:1.2rem}
+.hero-stats{display:flex;gap:2.2rem;margin-top:2.1rem;flex-wrap:wrap}
+.hero-stat .num{font-family:var(--font-head);font-weight:700;font-size:1.7rem;color:#fff}
+.hero-stat .lbl{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#a9ccf2}
+
+.btn-cta{background:#fff;color:var(--blue-700);font-weight:700;border-radius:10px;padding:.85rem 1.6rem;border:none;font-size:1rem;display:inline-flex;align-items:center;gap:.55rem;transition:.18s;box-shadow:var(--elev-2)}
+.btn-cta:hover{background:var(--blue-050);color:var(--blue-800);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:#eaf3ff;border:1.5px solid rgba(255,255,255,.5);border-radius:10px;padding:.85rem 1.5rem;font-weight:600;font-size:1rem;display:inline-flex;align-items:center;gap:.5rem;transition:.2s}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08);color:#fff}
+
+/* Radar PPI */
+.radar-wrap{position:relative;display:grid;place-items:center;min-height:430px}
+.radar-ppi{position:absolute;width:min(430px,86vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.10),rgba(255,255,255,0) 70%)}
+.radar-ring{position:absolute;border:1px solid rgba(255,255,255,.22);border-radius:50%}
+.rr1{width:min(430px,86vw);aspect-ratio:1}
+.rr2{width:min(320px,64vw);aspect-ratio:1}
+.rr3{width:min(210px,42vw);aspect-ratio:1}
+.rr4{width:min(105px,21vw);aspect-ratio:1}
+.radar-cross{position:absolute;background:rgba(255,255,255,.16)}
+.radar-cross.h{width:min(430px,86vw);height:1px}
+.radar-cross.v{height:min(430px,86vw);width:1px}
+.radar-sweep{position:absolute;width:min(430px,86vw);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,rgba(255,255,255,.5),rgba(255,255,255,0) 55deg,transparent);animation:sweep 4s linear infinite}
+@keyframes sweep{to{transform:rotate(360deg)}}
+/* Ecos com a escala dBZ real */
+.echo{position:absolute;border-radius:50%;filter:blur(2px);opacity:.92}
+.echo.e1{width:72px;height:54px;background:radial-gradient(circle,#ff0000,#ffd000 60%,transparent);top:32%;left:56%}
+.echo.e2{width:46px;height:40px;background:radial-gradient(circle,#9900cc,#ff4500 55%,transparent);top:44%;left:61%}
+.echo.e3{width:56px;height:46px;background:radial-gradient(circle,#00cc00,#00c8ff 65%,transparent);top:56%;left:39%}
+
+.status-chip{position:absolute;z-index:3;background:rgba(13,27,46,.72);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:.55rem .8rem;backdrop-filter:blur(6px);font-family:var(--font-mono);font-size:.72rem;color:#eaf3ff;display:flex;align-items:center;gap:.5rem;box-shadow:var(--elev-2)}
+.status-chip .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(67,160,71,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(67,160,71,0)}100%{box-shadow:0 0 0 0 rgba(67,160,71,0)}}
+.chip-top{top:13%;right:1%}
+.chip-bottom{bottom:11%;left:-1%}
+
+/* ===== SEÇÕES ===== */
+.section{padding:5.5rem 0}
+.section-head h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-top:.7rem}
+.section-sub{color:var(--ink-2);max-width:42rem;margin-top:.7rem;font-size:1.03rem}
+
+/* Cards Material */
+.feature-card{background:var(--surface);border-radius:14px;padding:1.7rem;height:100%;position:relative;overflow:hidden;box-shadow:var(--elev-1);border-top:3px solid var(--accent,var(--blue-500));transition:transform .2s,box-shadow .2s}
+.feature-card:hover{transform:translateY(-4px);box-shadow:var(--elev-3)}
+.feature-ico{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:1.5rem;color:#fff;margin-bottom:1.05rem;background:var(--accent,var(--blue-500))}
+.feature-card h3{font-size:1.18rem;font-weight:700;margin-bottom:.5rem;font-family:var(--font-head)}
+.feature-card p{color:var(--ink-2);font-size:.95rem;margin-bottom:0;line-height:1.55}
+.feature-tag{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);background:var(--blue-050);border-radius:6px;padding:.18rem .55rem;display:inline-block;margin-top:1rem}
+
+/* Legenda dBZ real (bloco explicativo) */
+.dbz-legend{background:var(--surface);border-radius:14px;padding:1.4rem 1.6rem;box-shadow:var(--elev-1);margin-top:2.5rem}
+.dbz-legend .scale{height:16px;border-radius:6px;background:var(--dbz-scale)}
+.dbz-legend .ticks{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.68rem;color:var(--ink-2);margin-top:.5rem}
+
+/* ===== COBERTURA ===== */
+.coverage{background:linear-gradient(180deg,var(--blue-800),var(--blue-900));color:#eaf3ff}
+.coverage .section-sub{color:#c6dcf7}
+.station-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:.5rem 1rem;font-size:.9rem;color:#eaf3ff;display:inline-flex;align-items:center;gap:.5rem;font-weight:500}
+.station-pill i{color:#8fc4ff}
+.coverage-stat{border-left:3px solid;border-image:var(--dbz-scale) 1;padding-left:1rem}
+.coverage-stat .n{font-family:var(--font-head);font-weight:700;font-size:2.3rem;color:#fff;line-height:1}
+.coverage-stat .t{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#a9ccf2;margin-top:.4rem}
+
+/* ===== SOBRE ===== */
+.about-card{background:var(--surface);border-radius:16px;padding:2.2rem;box-shadow:var(--elev-1)}
+.source-badge{display:inline-flex;align-items:center;gap:.45rem;font-size:.82rem;font-weight:500;color:var(--ink);background:var(--blue-050);border-radius:8px;padding:.4rem .75rem;margin:.25rem .25rem 0 0}
+.source-badge i{color:var(--blue-600)}
+
+/* Eco do DrawerHeader do app (cabeçalho azul com a logo) */
+.drawer-echo{border-radius:16px;overflow:hidden;box-shadow:var(--elev-2);background:var(--surface)}
+.drawer-echo .dh{background:var(--blue-500);padding:1.6rem;display:flex;align-items:center;gap:1rem}
+.drawer-echo .dh .logo-slot{width:64px;height:64px;border-radius:14px;background:#fff;display:grid;place-items:center;position:relative;overflow:hidden;flex:0 0 auto}
+.drawer-echo .dh .logo-slot .ring{position:absolute;border:2px solid var(--blue-500);border-radius:50%;opacity:.55}
+.drawer-echo .dh .logo-slot .rr-a{width:42px;height:42px}
+.drawer-echo .dh .logo-slot .rr-b{width:24px;height:24px}
+.drawer-echo .dh .logo-slot .d{width:9px;height:9px;border-radius:50%;background:var(--blue-600)}
+.drawer-echo .dh .txt{color:#fff}
+.drawer-echo .dh .txt b{font-family:var(--font-head);font-size:1.25rem;display:block}
+.drawer-echo .dh .txt span{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;opacity:.85}
+.drawer-echo .row-item{display:flex;align-items:center;gap:.8rem;padding:.85rem 1.6rem;border-bottom:1px solid var(--line);color:var(--ink);font-size:.95rem}
+.drawer-echo .row-item:last-child{border-bottom:none}
+.drawer-echo .row-item i.lead{color:var(--blue-600);font-size:1.15rem}
+.drawer-echo .row-item .sw{margin-left:auto;width:34px;height:19px;border-radius:99px;background:var(--blue-500);position:relative}
+.drawer-echo .row-item .sw::after{content:"";position:absolute;top:2px;right:2px;width:15px;height:15px;border-radius:50%;background:#fff}
+.drawer-echo .row-item .sw.off{background:#cfd8e3}
+.drawer-echo .row-item .sw.off::after{right:auto;left:2px}
+
+/* ===== DOWNLOAD ===== */
+.download{background:linear-gradient(150deg,var(--blue-800),var(--blue-900));color:#fff;border-radius:22px;padding:3.4rem;position:relative;overflow:hidden;box-shadow:var(--elev-3)}
+.download .dbz-bar{position:absolute;top:0;left:0}
+.store-btn{display:inline-flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.28);border-radius:12px;padding:.72rem 1.4rem;color:#fff;transition:.2s;min-width:210px}
+.store-btn:hover{border-color:#fff;background:rgba(255,255,255,.16);color:#fff}
+.store-btn i{font-size:2rem;line-height:1}
+.store-btn .s1{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#c6dcf7;display:block}
+.store-btn .s2{font-family:var(--font-head);font-weight:700;font-size:1.05rem;display:block;line-height:1.1}
+
+/* ===== RODAPÉ ===== */
+.footer{background:#0d1b2e;color:#a9bdd6;padding:3.2rem 0 1.6rem}
+.footer a{color:#a9bdd6}
+.footer a:hover{color:#fff}
+.footer h5{color:#fff;font-family:var(--font-head);font-size:1rem;margin-bottom:1rem}
+.footer .fine{border-top:1px solid rgba(255,255,255,.08);margin-top:2.2rem;padding-top:1.4rem;font-size:.82rem;font-family:var(--font-mono);color:#6f89a8}
+
+@media (max-width:991px){
+  .hero{padding-top:3rem;text-align:center}
+  .hero-lead,.hero-stats{margin-left:auto;margin-right:auto}
+  .hero-stats{justify-content:center}
+  .radar-wrap{min-height:350px;margin-top:2.5rem}
+}
+@media (prefers-reduced-motion:reduce){.radar-sweep,.status-chip .pulse{animation:none}}
