@@ -171,6 +171,16 @@ a{text-decoration:none}
 .drawer-echo .row-item .sw.off{background:#cfd8e3}
 .drawer-echo .row-item .sw.off::after{right:auto;left:2px}
 
+/* ===== SOBRE O PROJETO ===== */
+.project{background:var(--surface)}
+.project-panel{max-width:56rem;margin:0 auto}
+.project-panel h2{font-size:clamp(1.8rem,3.2vw,2.4rem)}
+.project-body{margin-top:1.8rem}
+.project-body p{color:var(--ink-2);font-size:1.05rem;line-height:1.75;margin-bottom:1.15rem}
+.project-body p:last-child{margin-bottom:0}
+.project-body strong{color:var(--ink);font-weight:700}
+.project-tags{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:2.2rem}
+
 /* ===== DOWNLOAD ===== */
 .download{background:linear-gradient(150deg,var(--blue-800),var(--blue-900));color:#fff;border-radius:22px;padding:3.4rem;position:relative;overflow:hidden;box-shadow:var(--elev-3)}
 .download .dbz-bar{position:absolute;top:0;left:0}
